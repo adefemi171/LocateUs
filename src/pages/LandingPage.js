@@ -8,11 +8,11 @@ export default class Landingpage extends Component {
     _onPress(){
         alert('You tapped the button')
     }
-    componentDidMount() {
-    Font.loadAsync({
-      'Comfortaa-SemiBold': Asset.fromModule(require('/assets/fonts/Comfortaa-SemiBold.ttf')).uri,
-    });
-  }
+//     componentDidMount() {
+//     Font.loadAsync({
+//       'Comfortaa-SemiBold': Asset.fromModule(require('/assets/fonts/Comfortaa-SemiBold.ttf')).uri,
+//     });
+//   }
 
     render() {
         return(
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         margin: 30,
         color: 'blue',
         fontSize: 80,
-        fontFamily: 'Comfortaa-SemiBold'
+        fontFamily: 'Roboto'
 
     },
     btnSignUpText: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: '200',
         color: 'blue',
-        fontFamily: 'Comfortaa-SemiBold',
+        fontFamily: 'Roboto',
         textAlign: 'center'
     },
     btnSignUp: {
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: '200',
         color: 'white',
-        fontFamily: 'Comfortaa-SemiBold',
+        fontFamily: 'Roboto',
         textAlign: 'center'
     },
     btnSignIn: {
