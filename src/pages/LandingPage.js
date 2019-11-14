@@ -10,7 +10,8 @@ export default class Landingpage extends Component {
     }
 //     componentDidMount() {
 //     Font.loadAsync({
-//       'Comfortaa-SemiBold': Asset.fromModule(require('/assets/fonts/Comfortaa-SemiBold.ttf')).uri,
+//       'comfortaa-semi-bold': require('../../assets/fonts/Comfortaa-Bold.ttf'),
+
 //     });
 //   }
 
@@ -35,10 +36,6 @@ export default class Landingpage extends Component {
                 </View>
 
             </View>
-            //  <Header>
-            //         placement="left"
-            //         centerComponent={{text: 'LocateUs', style: {color: 'blue'}}}
-            //    />
         );
     }
 }
@@ -46,42 +43,44 @@ export default class Landingpage extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         backgroundColor: '#fff',
         alignItems: 'center',
 
     },
     btn: {
         flex: 1,
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
+        flexDirection: 'column',
+        marginVertical: 10
 
     },
     textTopic:{
-        margin: 30,
-        color: 'blue',
+        color: 'steelblue',
         fontSize: 80,
-        fontFamily: 'Roboto'
+        fontFamily: 'Roboto',
+        marginTop: 50
 
     },
     btnSignUpText: {
-        margin: 20,
+        margin: 15,
         fontSize: 25,
         fontWeight: '200',
-        color: 'blue',
+        color: 'steelblue',
         fontFamily: 'Roboto',
         textAlign: 'center'
     },
     btnSignUp: {
         backgroundColor: "white",
-        paddingHorizontal: 30,
+        paddingHorizontal: 10,
         paddingVertical: 5,
-        borderRadius: 30,
-        borderColor: 'blue',
+        borderRadius: 10,
+        borderColor: 'steelblue',
         borderWidth:0.5,
         width: 400
     },
      btnSignInText: {
-        margin: 20,
+        margin: 15,
         fontSize: 25,
         fontWeight: '200',
         color: 'white',
@@ -89,10 +88,11 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     btnSignIn: {
-        backgroundColor: "grey",
-        paddingHorizontal: 30,
+        backgroundColor: "steelblue",
+        paddingHorizontal: 10,
         paddingVertical: 5,
-        borderRadius: 30,
-        width: 400
+        borderRadius: 10,
+        width: 400,
+        marginTop: 5
     }
 });

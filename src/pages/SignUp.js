@@ -24,57 +24,57 @@ export default class SignIn extends Component {
     render() {
         return(
             <View style={styles.container}>
+                <Text style={styles.heading}>
+                    Register
+                </Text>
                 <View style={{flexDirection:"row"}}>
                     <TextInput style={styles.fName}
-                    underlineColorAndroid='rgba(0,0,0,0)'
-                    placeholder="First Name"
-                    placeholderTextColor = "#002f6c"
-                    selectionColor="#fff"
-                    keyboardType="email-address"
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        placeholder="First Name"
+                        placeholderTextColor = "#002f6c"
+                        selectionColor="#fff"
+                        keyboardType="email-address"
                     />
 
                     <TextInput style={styles.lName}
-                    underlineColorAndroid='rgba(0,0,0,0)'
-                    placeholder="Last Name"
-                    secureTextEntry={true}
-                    placeholderTextColor = "#002f6c"
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        placeholder="Last Name"
+                        secureTextEntry={true}
+                        placeholderTextColor = "#002f6c"
                     />
                 </View>
 
                 <TextInput style={styles.inputBox}
-                onChangeText={(email) => this.setState({email})}
-                underlineColorAndroid='rgba(0,0,0,0)'
-                placeholder="Email"
-                placeholderTextColor = "#002f6c"
-                selectionColor="#fff"
-                keyboardType="email-address"
-                onSubmitEditing={()=> this.password.focus()}/>
-
-                <TextInput style={styles.inputBox}
+                    onChangeText={(email) => this.setState({email})}
                     underlineColorAndroid='rgba(0,0,0,0)'
-                    placeholder="Phone Number"
+                    placeholder="Email"
                     placeholderTextColor = "#002f6c"
                     selectionColor="#fff"
-                    keyboardType="number-pad"
-                   />
-                     <TextInput style={styles.inputBox}
+                    keyboardType="email-address"
+                    onSubmitEditing={()=> this.password.focus()}
+                />
+
+                <TextInput style={styles.inputBox}
                     underlineColorAndroid='rgba(0,0,0,0)'
                     placeholder="Password"
                     placeholderTextColor = "#002f6c"
                     selectionColor="#fff"
-                    keyboardType="password"
-                   />
-
-                <TouchableOpacity style={styles.signupTextCont}>
-                <Text style={styles.signupButton} onPress={this._onPress}>SIGN UP</Text>
+                    keyboardType="visible-password"
+                />
+                 <TextInput style={styles.inputBox}
+                    underlineColorAndroid='rgba(0,0,0,0)'
+                    placeholder="Confirm Password"
+                    placeholderTextColor = "#002f6c"
+                    selectionColor="#fff"
+                    keyboardType="visible-password"
+                />
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText} onPress={this._onPress}>SIGN UP</Text>
                 </TouchableOpacity>
-
+                <Text style={styles.footer}>
+                    By signing up, you agree to our Terms of Service and Privacy Policy
+                </Text>
             </View>
-
-            //  <Header>
-            //         placement="left"
-            //         centerComponent={{text: 'LocateUs', style: {color: 'blue'}}}
-            //    />
         );
     }
 }
@@ -83,95 +83,83 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
+        paddingHorizontal: 16,
         backgroundColor: 'white',
 
     },
+    heading: {
+        position: "absolute",
+        top: 10,
+        left: 20,
+        fontSize: 80,
+        fontWeight: "800",
+    },
     fName: {
-        width: 300,
-        backgroundColor: '#eeeeee',
-        borderRadius: 25,
-        paddingHorizontal: 16,
-        fontSize: 16,
-        color: '#002f6c',
-        marginVertical: 10,
         justifyContent: 'flex-start',
-        flex: 1
+        flex: 1,
+        borderBottomColor: 'steelblue',
+        borderBottomWidth: 1,
+        flexDirection: "row",
+        fontSize: 20,
+        fontWeight: "600",
+        marginVertical: 8,
+        borderRadius: 3,
+        borderColor: "#f9f9f9",
+        borderWidth: 2,
+        padding: 16,
+        width: 343
     },
     lName: {
-        width: 300,
-        backgroundColor: '#eeeeee',
-        borderRadius: 25,
-        paddingHorizontal: 16,
-        fontSize: 16,
-        color: '#002f6c',
-        marginVertical: 10,
         justifyContent: 'flex-end',
-        flex: 1
+        flex: 1,
+        borderBottomColor: 'steelblue',
+        borderBottomWidth: 1,
+        flexDirection: "row",
+        fontSize: 20,
+        fontWeight: "600",
+        marginVertical: 8,
+        borderRadius: 3,
+        borderColor: "#f9f9f9",
+        borderWidth: 2,
+        padding: 16,
+        width: 343
     },
     inputBox: {
+        borderBottomColor: 'steelblue',
+        borderBottomWidth: 1,
+        flexDirection: "row",
+        fontSize: 20,
+        fontWeight: "600",
+        marginVertical: 8,
+        borderRadius: 3,
+        borderColor: "#f9f9f9",
+        borderWidth: 2,
+        padding: 16,
+        width: 500,
+        alignItems: 'stretch',
+        height: 100
+    },
+    button: {
         width: 300,
-        backgroundColor: '#eeeeee',
-        borderRadius: 25,
-        paddingHorizontal: 16,
-        fontSize: 16,
-        color: '#002f6c',
-        marginVertical: 10
+        backgroundColor: '#4f83cc',
+        borderRadius: 10,
+        marginVertical: 10,
+        paddingVertical: 12,
+        borderWidth:0.5,
+        width: 400,
+        alignSelf:'center'
     },
-    signupTextCont: {
-      flexGrow: 1,
-      justifyContent: 'center',
-      alignItems: 'flex-end',
-      paddingVertical: 16,
-      flexDirection: 'row'
+    buttonText: {
+        fontSize: 20,
+        fontWeight: '500',
+        color: '#ffffff',
+        textAlign: 'center'
     },
-    signupButton: {
-        color: '#12799f',
-        fontSize:16,
-        fontWeight: '500'
-    }
-    // button: {
-    //     width: 300,
-    //     backgroundColor: '#4f83cc',
-    //     borderRadius: 25,
-    //     marginVertical: 10,
-    //     paddingVertical: 12
-    // },
-    // buttonText: {
-    //     fontSize: 16,
-    //     fontWeight: '500',
-    //     color: '#ffffff',
-    //     textAlign: 'center'
-    // },
-    // signupTextCont: {
-    //   flexGrow: 1,
-    //   justifyContent: 'center',
-    //   alignItems: 'flex-end',
-    //   paddingVertical: 16,
-    //   flexDirection: 'row',
-    // },
-    // signupText: {
-    //   color: '#12799f', 
-    //   fontSize:16,
-    // },
-    // signupButton: {
-    //     color: '#12799f',
-    //     fontSize:16,
-    //     fontWeight: '500',
-    // },
-    // btnSignInText: {
-    //     margin: 20,
-    //     fontSize: 25,
-    //     fontWeight: '200',
-    //     color: 'white',
-    //     fontFamily: 'Roboto',
-    //     textAlign: 'center'
-    // },
-    // btnSignIn: {
-    //     backgroundColor: "grey",
-    //     paddingHorizontal: 30,
-    //     paddingVertical: 5,
-    //     borderRadius: 30,
-    //     width: 400
-    // }
+    footer: {
+        fontSize: 20,
+        fontWeight: "300",
+        color: 'steelblue'
+    },
+
 });

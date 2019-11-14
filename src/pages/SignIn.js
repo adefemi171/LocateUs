@@ -24,6 +24,9 @@ export default class SignIn extends Component {
     render() {
         return(
             <View style={styles.container}>
+            <Text style={styles.heading}>
+                    Sign In
+                </Text>
                 <TextInput style={styles.inputBox}
                 onChangeText={(email) => this.setState({email})}
                 underlineColorAndroid='rgba(0,0,0,0)'
@@ -46,7 +49,7 @@ export default class SignIn extends Component {
                 <Text style={styles.buttonText} onPress={this._onPress}>SIGN IN</Text>
                 </TouchableOpacity>
 
-                <Text style={styles.signupText}>Forgor Password?</Text>
+                <Text style={styles.signupText}>Forgot Password?</Text>
 
                 <TouchableOpacity onPress={this._onPress}><Text style={styles.signupButton}>New User? Create account</Text></TouchableOpacity>
             </View>
@@ -67,57 +70,57 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
 
     },
+    heading:{
+        position: "absolute",
+        top: 10,
+        left: 20,
+        fontSize: 80,
+        fontWeight: "800",
+    },
     inputBox: {
-        width: 300,
-        backgroundColor: '#eeeeee',
-        borderRadius: 25,
-        paddingHorizontal: 16,
-        fontSize: 16,
-        color: '#002f6c',
-        marginVertical: 10
+        borderBottomColor: 'steelblue',
+        borderBottomWidth: 1,
+        flexDirection: "row",
+        fontSize: 20,
+        fontWeight: "600",
+        marginVertical: 8,
+        borderRadius: 3,
+        borderColor: "#f9f9f9",
+        borderWidth: 2,
+        padding: 16,
+        width: 500,
+        alignItems: 'stretch',
+        height: 100
     },
     button: {
         width: 300,
         backgroundColor: '#4f83cc',
-        borderRadius: 25,
+        borderRadius: 10,
         marginVertical: 10,
-        paddingVertical: 12
+        paddingVertical: 12,
+        borderWidth:0.5,
+        width: 400
     },
     buttonText: {
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: '500',
         color: '#ffffff',
         textAlign: 'center'
     },
-    signupTextCont: {
-      flexGrow: 1,
-      justifyContent: 'center',
-      alignItems: 'flex-end',
-      paddingVertical: 16,
-      flexDirection: 'row',
-    },
+    // signupTextCont: {
+    //   flexGrow: 1,
+    //   justifyContent: 'center',
+    //   alignItems: 'flex-end',
+    //   paddingVertical: 16,
+    //   flexDirection: 'row',
+    // },
     signupText: {
-      color: '#12799f', 
+      color: '#12799f',
       fontSize:16,
     },
     signupButton: {
         color: '#12799f',
         fontSize:16,
         fontWeight: '500',
-    },
-    btnSignInText: {
-        margin: 20,
-        fontSize: 25,
-        fontWeight: '200',
-        color: 'white',
-        fontFamily: 'Roboto',
-        textAlign: 'center'
-    },
-    btnSignIn: {
-        backgroundColor: "grey",
-        paddingHorizontal: 30,
-        paddingVertical: 5,
-        borderRadius: 30,
-        width: 400
     }
 });
