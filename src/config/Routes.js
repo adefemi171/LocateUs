@@ -11,15 +11,18 @@ const RootStack = createStackNavigator({
     // SplashScreen:{
     //     screen: SplashScreen,
     // },
-    // LandingPage:{
-    //     screen: LandingPage,
-    // },
-    // SignIn:{
-    //     screen: SignIn
-    // },
+    LandingPage:{
+        screen: LandingPage,
+    },
+    SignIn:{
+        screen: SignIn
+    },
     SignUp: {
         screen: SignUp
-    }
+    },
+    // {
+    //     initialRouteName: 'SplashScreen',
+    // }
 });
 
 const AppContainer = createAppContainer(RootStack);

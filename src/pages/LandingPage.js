@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import {StyleSheet, Button, View, Header, Text, TouchableOpacity } from 'react-native';
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
+import routing from '../config/Routes';
 
 
 export default class Landingpage extends Component {
-    _onPress(){
-        alert('You tapped the button')
-    }
+    // _onPress(){
+    //     this.props.navigation.navi
+    // }
 //     componentDidMount() {
 //     Font.loadAsync({
 //       'comfortaa-semi-bold': require('../../assets/fonts/Comfortaa-Bold.ttf'),
@@ -23,13 +24,13 @@ export default class Landingpage extends Component {
                 </Text>
                 <View style={styles.btn}>
                     <TouchableOpacity style={styles.btnSignUp}
-                        onPress={this._onPress}
+                        onPress={() => this.props.navigation.navigate('SignUp')}
                     >
                         <Text style={styles.btnSignUpText}>SIGN UP</Text>
                     </TouchableOpacity>
 
                      <TouchableOpacity style={styles.btnSignIn}
-                        onPress={this._onPress}
+                        onPress={() => this.props.navigation.navigate('SignIn')}
                     >
                         <Text style={styles.btnSignInText}>SIGN IN</Text>
                     </TouchableOpacity>

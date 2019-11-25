@@ -1,26 +1,67 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard  } from 'react-native';
-import * as Font from 'expo-font';
-import { Asset } from 'expo-asset';
+// import * as Font from 'expo-font';
+// import { Asset } from 'expo-asset';
+import axios from '../config/Auth';
+import deviceStorage from '../services/deviceStorage';
 
 
 export default class SignIn extends Component {
-    _onPress(){
-        alert('You tapped the button')
-    }
+    // _onPress(){
+    //     alert('You tapped the button');
+    // }
+
 //     componentDidMount() {
 //     Font.loadAsync({
 //       'Comfortaa-SemiBold': Asset.fromModule(require('/assets/fonts/Comfortaa-SemiBold.ttf')).uri,
 //     });
 //   }
 
-     constructor(props){
-        super(props);
-        this.state={
-            email:'',
-            password: ''
-        };
-    }
+    //  constructor(props){
+    //     super(props);
+    //     this.state={
+    //         email:'',
+    //         password: ''
+    //     };
+    // }
+    constructor(props){
+        this.registerUser = this.registerUser.bind(this);
+        this.onRegistrationFail = this.onRegistrationFail.bind(this);
+    };
+
+    // const [error, setError] = this.setState({ error: false, message: "" });
+
+    registerUser(){
+        const { fName, lName, email, password, password_confirmation} = this.state;
+        this.setState({error:'', loading:true});
+        axios.post("/signup",{
+            user: {
+                fName: fName,
+                lName: lName,
+                email: email,
+                password: password,
+                password_confirmation: password_confirmation
+            }
+        },)
+        .then((response) => {
+                console.log(response);
+        })
+        .catch((error) =>{
+            console.log(error);
+            this.onRegistrationFail();
+        });
+    };
+
+    //A function that sets error state to registration failed and loading to false
+    onRegistrationFail(){
+        this.setState({
+            error: 'Registration failed',
+            loading: false
+        });
+    };
+
+
+    //--------------------
     render() {
         return(
             <View style={styles.container}>
@@ -69,7 +110,7 @@ export default class SignIn extends Component {
                     keyboardType="visible-password"
                 />
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText} onPress={this._onPress}>SIGN UP</Text>
+                    <Text style={styles.buttonText} onPress={this.registerUser}>SIGN UP</Text>
                 </TouchableOpacity>
                 <Text style={styles.footer}>
                     By signing up, you agree to our Terms of Service and Privacy Policy

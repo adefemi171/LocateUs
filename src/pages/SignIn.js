@@ -1,26 +1,57 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard  } from 'react-native';
-import * as Font from 'expo-font';
-import { Asset } from 'expo-asset';
+// import * as Font from 'expo-font';
+// import { Asset } from 'expo-asset';
+import axios from '../config/Auth';
+
 
 
 export default class SignIn extends Component {
-    _onPress(){
-        alert('You tapped the button')
-    }
+    // _onPress(){
+    //     alert('You tapped the button');
+    // }
 //     componentDidMount() {
 //     Font.loadAsync({
 //       'Comfortaa-SemiBold': Asset.fromModule(require('/assets/fonts/Comfortaa-SemiBold.ttf')).uri,
 //     });
 //   }
+    // const [error, setError] = this.setState({ error: false, message: "" });
 
      constructor(props){
         super(props);
         this.state={
             email:'',
-            password: ''
+            password: '',
+            error:'',
+            loading: false
         };
+        this.loginUser =  this.loginUser.bind(this);
     }
+
+    //loginUser Function
+
+    loginUser() {
+        const { email, password} = this.state;
+
+        this.setState({ error: '', loading: true });
+
+        axios.post("/login",{
+            email: email,
+            password: password
+        })
+        .then((response) => {
+            return({
+                    message: <Text style={{alignSelf: 'center', color: 'red'}}>Registration Successful!</Text>
+            });
+        })
+        .catch((error) => {
+            return setError({
+                error: true,
+                message: <Text style={{alignSelf: 'center', color: 'red'}}></Text>
+            });
+        })
+    };
+    
     render() {
         return(
             <View style={styles.container}>
@@ -51,7 +82,7 @@ export default class SignIn extends Component {
 
                 <Text style={styles.signupText}>Forgot Password?</Text>
 
-                <TouchableOpacity onPress={this._onPress}><Text style={styles.signupButton}>New User? Create account</Text></TouchableOpacity>
+                <TouchableOpacity onPress={this.loginUser}><Text style={styles.signupButton}>New User? Create account</Text></TouchableOpacity>
             </View>
 
             //  <Header>

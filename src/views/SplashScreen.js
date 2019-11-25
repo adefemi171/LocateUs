@@ -24,7 +24,7 @@ export default class SplashScreen extends React.Component {
                     ref={animation => {
                         this.animation = animation;
                     }}
-                    source={require('../../assets/splashLocation.json')}
+                    source={require('../../assets/world-locations.json')}
                 />
         );
     }
