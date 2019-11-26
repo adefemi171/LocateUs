@@ -7,17 +7,7 @@ import axios from '../config/Auth';
 
 
 export default class SignIn extends Component {
-    // _onPress(){
-    //     alert('You tapped the button');
-    // }
-//     componentDidMount() {
-//     Font.loadAsync({
-//       'Comfortaa-SemiBold': Asset.fromModule(require('/assets/fonts/Comfortaa-SemiBold.ttf')).uri,
-//     });
-//   }
-    // const [error, setError] = this.setState({ error: false, message: "" });
-
-     constructor(props){
+    constructor(props){
         super(props);
         this.state={
             email:'',
@@ -26,38 +16,45 @@ export default class SignIn extends Component {
             loading: false
         };
         this.loginUser =  this.loginUser.bind(this);
+        this.onLoginFail = this.onLoginFail.bind(this);
     }
 
     //loginUser Function
 
     loginUser() {
-        const { email, password} = this.state;
+            const { email, password} = this.state;
 
-        this.setState({ error: '', loading: true });
+            this.setState({ error: '', loading: true });
 
-        axios.post("/login",{
-            email: email,
-            password: password
+        axios.post("159.203.70.113:3300/login",{
+                email: email,
+                password: password
         })
         .then((response) => {
-            return({
-                    message: <Text style={{alignSelf: 'center', color: 'red'}}>Registration Successful!</Text>
-            });
+            console.log(response);
         })
         .catch((error) => {
-            return setError({
-                error: true,
-                message: <Text style={{alignSelf: 'center', color: 'red'}}></Text>
-            });
-        })
-    };
-    
+            console.log(error);
+            this.onLoginFail();
+        });
+    }
+
+    onLoginFail() {
+        this.setState({
+            error: 'Login Failed',
+            loading: false
+        });
+    }
+
     render() {
         return(
             <View style={styles.container}>
             <Text style={styles.heading}>
                     Sign In
                 </Text>
+            <Text style={styles.errorTextStyle}>
+                {error}
+            </Text>
                 <TextInput style={styles.inputBox}
                 onChangeText={(email) => this.setState({email})}
                 underlineColorAndroid='rgba(0,0,0,0)'
@@ -100,6 +97,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
 
+    },
+    errorTextStyle: {
+        alignSelf: 'center',
+        fontSize: 18,
+        color: 'red'
     },
     heading:{
         position: "absolute",

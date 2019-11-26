@@ -6,15 +6,7 @@ import routing from '../config/Routes';
 
 
 export default class Landingpage extends Component {
-    // _onPress(){
-    //     this.props.navigation.navi
-    // }
-//     componentDidMount() {
-//     Font.loadAsync({
-//       'comfortaa-semi-bold': require('../../assets/fonts/Comfortaa-Bold.ttf'),
 
-//     });
-//   }
 
     render() {
         return(

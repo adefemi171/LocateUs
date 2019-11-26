@@ -3,14 +3,11 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard  } from '
 // import * as Font from 'expo-font';
 // import { Asset } from 'expo-asset';
 import axios from '../config/Auth';
-import deviceStorage from '../services/deviceStorage';
+
+
 
 
 export default class SignIn extends Component {
-    // _onPress(){
-    //     alert('You tapped the button');
-    // }
-
 //     componentDidMount() {
 //     Font.loadAsync({
 //       'Comfortaa-SemiBold': Asset.fromModule(require('/assets/fonts/Comfortaa-SemiBold.ttf')).uri,
@@ -34,7 +31,7 @@ export default class SignIn extends Component {
     registerUser(){
         const { fName, lName, email, password, password_confirmation} = this.state;
         this.setState({error:'', loading:true});
-        axios.post("/signup",{
+        axios.post("159.203.70.113:3300/signup",{
             user: {
                 fName: fName,
                 lName: lName,
@@ -50,7 +47,7 @@ export default class SignIn extends Component {
             console.log(error);
             this.onRegistrationFail();
         });
-    };
+    }
 
     //A function that sets error state to registration failed and loading to false
     onRegistrationFail(){
@@ -58,13 +55,16 @@ export default class SignIn extends Component {
             error: 'Registration failed',
             loading: false
         });
-    };
+    }
 
 
     //--------------------
     render() {
         return(
             <View style={styles.container}>
+                <Text style={styles.errorTextStyle}>
+                    {error}
+                </Text>
                 <Text style={styles.heading}>
                     Register
                 </Text>
@@ -135,6 +135,11 @@ const styles = StyleSheet.create({
         left: 20,
         fontSize: 80,
         fontWeight: "800",
+    },
+    errorTextStyle: {
+        alignSelf: 'center',
+        fontSize: 18,
+        color: 'red'
     },
     fName: {
         justifyContent: 'flex-start',
