@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard  } from 'react-native';
-// import * as Font from 'expo-font';
-// import { Asset } from 'expo-asset';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import axios from '../config/Auth';
 
 
 
 
 export default class SignIn extends Component {
-//     componentDidMount() {
-//     Font.loadAsync({
-//       'Comfortaa-SemiBold': Asset.fromModule(require('/assets/fonts/Comfortaa-SemiBold.ttf')).uri,
-//     });
-//   }
 
      constructor(props){
         super(props);
@@ -62,6 +55,7 @@ export default class SignIn extends Component {
 
     //--------------------
     render() {
+        const { error } = this.state;
         return(
             <View style={styles.container}>
                 <Text style={styles.errorTextStyle}>
@@ -76,41 +70,40 @@ export default class SignIn extends Component {
                         placeholder="First Name"
                         placeholderTextColor = "#002f6c"
                         selectionColor="#fff"
-                        keyboardType="email-address"
                     />
 
                     <TextInput style={styles.lName}
                         underlineColorAndroid='rgba(0,0,0,0)'
                         placeholder="Last Name"
-                        secureTextEntry={true}
                         placeholderTextColor = "#002f6c"
+                        selectionColor="#fff"
                     />
                 </View>
 
                 <TextInput style={styles.inputBox}
                     onChangeText={(email) => this.setState({email})}
                     underlineColorAndroid='rgba(0,0,0,0)'
-                    placeholder="Email"
+                    placeholder="user@email.com"
                     placeholderTextColor = "#002f6c"
                     selectionColor="#fff"
                     keyboardType="email-address"
-                    onSubmitEditing={()=> this.password.focus()}
+                    // onSubmitEditing={()=> this.password.focus()}
                 />
 
                 <TextInput style={styles.inputBox}
                     underlineColorAndroid='rgba(0,0,0,0)'
                     placeholder="Password"
+                    secureTextEntry={true}
                     placeholderTextColor = "#002f6c"
                     selectionColor="#fff"
-                    keyboardType="visible-password"
                     onChangeText={password => this.setState({ password })}
                 />
                  <TextInput style={styles.inputBox}
                     underlineColorAndroid='rgba(0,0,0,0)'
                     placeholder="Confirm Password"
+                    secureTextEntry={true}
                     placeholderTextColor = "#002f6c"
                     selectionColor="#fff"
-                    keyboardType="visible-password"
                     onChangeText={password_confirmation => this.setState({ password_confirmation })}
                 />
                 <TouchableOpacity style={styles.button}>

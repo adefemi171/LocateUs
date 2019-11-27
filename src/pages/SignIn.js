@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard  } from 'react-native';
-// import * as Font from 'expo-font';
-// import { Asset } from 'expo-asset';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import axios from '../config/Auth';
 
 
@@ -47,6 +45,7 @@ export default class SignIn extends Component {
     }
 
     render() {
+        const {error} = this.state;
         return(
             <View style={styles.container}>
             <Text style={styles.heading}>
@@ -58,7 +57,7 @@ export default class SignIn extends Component {
                 <TextInput style={styles.inputBox}
                 onChangeText={(email) => this.setState({email})}
                 underlineColorAndroid='rgba(0,0,0,0)'
-                placeholder="Email"
+                placeholder="user@email.com"
                 placeholderTextColor = "#002f6c"
                 selectionColor="#fff"
                 keyboardType="email-address"
@@ -74,18 +73,13 @@ export default class SignIn extends Component {
                 />
 
                 <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={this._onPress}>SIGN IN</Text>
+                <Text style={styles.buttonText} onPress={this.loginUser}>SIGN IN</Text>
                 </TouchableOpacity>
 
                 <Text style={styles.signupText}>Forgot Password?</Text>
 
-                <TouchableOpacity onPress={this.loginUser}><Text style={styles.signupButton}>New User? Create account</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')}><Text style={styles.signupButton}>New User? Create account</Text></TouchableOpacity>
             </View>
-
-            //  <Header>
-            //         placement="left"
-            //         centerComponent={{text: 'LocateUs', style: {color: 'blue'}}}
-            //    />
         );
     }
 }
