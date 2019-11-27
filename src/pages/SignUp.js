@@ -14,19 +14,21 @@ export default class SignIn extends Component {
 //     });
 //   }
 
-    //  constructor(props){
-    //     super(props);
-    //     this.state={
-    //         email:'',
-    //         password: ''
-    //     };
-    // }
-    constructor(props){
+     constructor(props){
+        super(props);
+        this.state={
+            fName:'',
+            lName:'',
+            email:'',
+            password: '',
+            password_confirmation:'',
+            error:'',
+            loading:false
+        };
         this.registerUser = this.registerUser.bind(this);
         this.onRegistrationFail = this.onRegistrationFail.bind(this);
-    };
+    }
 
-    // const [error, setError] = this.setState({ error: false, message: "" });
 
     registerUser(){
         const { fName, lName, email, password, password_confirmation} = this.state;
@@ -101,6 +103,7 @@ export default class SignIn extends Component {
                     placeholderTextColor = "#002f6c"
                     selectionColor="#fff"
                     keyboardType="visible-password"
+                    onChangeText={password => this.setState({ password })}
                 />
                  <TextInput style={styles.inputBox}
                     underlineColorAndroid='rgba(0,0,0,0)'
@@ -108,6 +111,7 @@ export default class SignIn extends Component {
                     placeholderTextColor = "#002f6c"
                     selectionColor="#fff"
                     keyboardType="visible-password"
+                    onChangeText={password_confirmation => this.setState({ password_confirmation })}
                 />
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText} onPress={this.registerUser}>SIGN UP</Text>
