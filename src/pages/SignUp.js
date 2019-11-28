@@ -5,7 +5,7 @@ import axios from '../config/Auth';
 
 
 
-export default class SignIn extends Component {
+export default class SignUp extends Component {
 
      constructor(props){
         super(props);
@@ -25,23 +25,34 @@ export default class SignIn extends Component {
 
     registerUser(){
         const { fName, lName, email, password, password_confirmation} = this.state;
-        this.setState({error:'', loading:true});
-        axios.post("159.203.70.113:3300/signup",{
-            user: {
-                fName: fName,
-                lName: lName,
-                email: email,
-                password: password,
-                password_confirmation: password_confirmation
-            }
-        },)
-        .then((response) => {
-                console.log(response);
-        })
-        .catch((error) =>{
-            console.log(error);
-            this.onRegistrationFail();
-        });
+        if (email == ""){
+            alert("Please Enter your Email");
+        }else{
+            this.setState({error:'', loading:true});
+            axios.post("159.203.70.113:3300/signup",{
+                user: {
+                    fName: fName,
+                    lName: lName,
+                    email: email,
+                    password: password,
+                    password_confirmation: password_confirmation
+                }
+            },)
+            .then((response) => {
+                    console.log(response);
+            })
+            .catch((error) =>{
+                console.log(error);
+                this.onRegistrationFail();
+            });
+
+            if (password !== password_confirmation){
+                alert("Password does not match");
+            }else{
+                alert("Successfully Registered");
+        }
+        }
+
     }
 
     //A function that sets error state to registration failed and loading to false
@@ -52,6 +63,28 @@ export default class SignIn extends Component {
         });
     }
 
+    renderButton(){
+        if (this.state.loading) {
+            return (
+                <View style={styles.spinnerStyle}>
+                <ActivityIndicator size={"small"} />
+                {/* {this.onButtonPress.bind(this)} */}
+
+                {/* loading={this.onButtonPress.bind(this)}  */}
+                </View>
+            );
+        } else {
+            return (
+                <Button
+                style={styles.loginButton}
+                title="Sign in"
+                //   onPress = {this.handleSubmit}
+
+                onPress={this.registerUser.bind(this)}
+                />
+            );
+        }
+    }
 
     //--------------------
     render() {
@@ -70,6 +103,7 @@ export default class SignIn extends Component {
                         placeholder="First Name"
                         placeholderTextColor = "#002f6c"
                         selectionColor="#fff"
+                        autoFocus
                     />
 
                     <TextInput style={styles.lName}

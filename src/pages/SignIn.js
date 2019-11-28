@@ -24,7 +24,7 @@ export default class SignIn extends Component {
 
             this.setState({ error: '', loading: true });
 
-        axios.post("159.203.70.113:3300/login",{
+        axios.get("159.203.70.113:3300/login",{
                 email: email,
                 password: password
         })

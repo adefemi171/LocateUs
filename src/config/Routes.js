@@ -13,6 +13,9 @@ const RootStack = createStackNavigator({
     LandingPage:{
         screen: LandingPage,
     },
+    // Register: {
+    //     screen: Register
+    // },
     SignIn:{
         screen: SignIn
     },
